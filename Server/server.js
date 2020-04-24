@@ -52,7 +52,7 @@ socket.on('image' , (message) => {
   var user = users.getUser(socket.id);
 
     if (user){
-      socket.broadcast.to(user.room).emit('newImageMessage' , generateImage(user.name , message.data));
+      io.to(user.room).emit('newImageMessage' , generateImage(user.name , message.data));
     }
 })
   socket.on('disconnect' , () => {
